@@ -8,6 +8,13 @@ body {
   background-color: #f9f9f9;
 }
 
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
 header {
   background-color: #2c3e50;
   color: #fff;
@@ -67,6 +74,69 @@ header nav ul li a:hover {
   transform: scale(1.05);
 }
 
+/* Content Sections */
+.content-section {
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.content-section h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-family: 'Playfair Display', serif;
+  position: relative;
+  display: inline-block;
+}
+
+.content-section h2::after {
+  content: '';
+  width: 50px;
+  height: 3px;
+  background-color: #ff6f61;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.content-section p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+/* Info Boxes */
+.info-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.info-box h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.info-box ul {
+  list-style: disc;
+  margin-left: 20px;
+  color: #555;
+}
+
 /* Hero Section */
 .hero {
   background: linear-gradient(135deg, #2c3e50, #34495e);
@@ -98,6 +168,8 @@ header nav ul li a:hover {
   font-size: 16px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   animation: fadeIn 2.5s ease-in-out;
+  display: inline-block;
+  margin-top: 20px;
 }
 
 .cta-button:hover {
@@ -105,80 +177,9 @@ header nav ul li a:hover {
   transform: scale(1.05);
 }
 
-/* Content Sections */
-.content-section {
-  padding: 40px 20px; /* Reduced padding */
-  text-align: center;
-  animation: fadeIn 2s ease-in-out;
-}
-
-.content-section h2 {
-  font-size: 28px; /* Slightly smaller heading */
-  margin-bottom: 15px; /* Reduced margin */
-  color: #2c3e50;
-  font-family: 'Playfair Display', serif;
-  position: relative;
-  display: inline-block;
-}
-
-.content-section h2::after {
-  content: '';
-  width: 50px;
-  height: 3px;
-  background-color: #ff6f61;
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.content-section p {
-  font-size: 16px; /* Slightly smaller text */
-  margin-bottom: 15px; /* Reduced margin */
-  color: #555;
-}
-
-.info-box {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px; /* Reduced padding */
-  border-radius: 10px;
-  text-align: left;
-  max-width: 800px;
-  margin: 0 auto 20px; /* Reduced margin */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.info-box h3 {
-  font-size: 22px; /* Slightly smaller heading */
-  margin-bottom: 10px; /* Reduced margin */
-  color: #2c3e50;
-}
-
-.info-box ul {
-  list-style: disc;
-  margin-left: 20px;
-  color: #555;
-}
-
-/* Footer */
-footer {
-  background-color: #2c3e50;
-  color: #fff;
-  text-align: center;
-  padding: 15px; /* Reduced padding */
-  margin-top: 20px; /* Reduced margin */
-}
-
 /* Modal Styles */
 .modal {
-  display: none;
+  display: flex;
   position: fixed;
   z-index: 1001;
   left: 0;
@@ -192,7 +193,7 @@ footer {
 
 .modal-content {
   background-color: #fff;
-  padding: 25px; /* Reduced padding */
+  padding: 25px;
   border-radius: 10px;
   width: 100%;
   max-width: 400px;
@@ -202,7 +203,7 @@ footer {
 }
 
 .modal-content h2 {
-  margin-bottom: 15px; /* Reduced margin */
+  margin-bottom: 15px;
   color: #2c3e50;
   font-family: 'Playfair Display', serif;
 }
@@ -215,8 +216,8 @@ footer {
 
 .modal-content input {
   width: 100%;
-  padding: 8px; /* Reduced padding */
-  margin-bottom: 10px; /* Reduced margin */
+  padding: 8px;
+  margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 16px;
@@ -240,7 +241,7 @@ footer {
 
 .modal-content p {
   text-align: center;
-  margin-top: 10px; /* Reduced margin */
+  margin-top: 10px;
   color: #555;
 }
 
@@ -262,14 +263,29 @@ footer {
   color: #ff6f61;
 }
 
+.text-link {
+  background: none;
+  border: none;
+  color: #ff6f61;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+
+/* Footer */
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+}
+
 /* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideIn {
@@ -280,5 +296,29 @@ footer {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  header nav ul {
+    margin-top: 10px;
+  }
+
+  header nav ul li {
+    margin: 0 10px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .content-section {
+    padding: 20px 10px;
   }
 }
