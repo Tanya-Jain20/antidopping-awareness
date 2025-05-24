@@ -1,29 +1,42 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import WhatIsDoping from './pages/WhatIsDoping';
-import HarmfulEffects from './pages/HarmfulEffects';
-import Cases from './pages/Cases';
-import Awareness from './pages/Awareness';
-import Contact from './pages/Contact';
 import './styles.css';
 
-export default function App() {
+function App() {
   return (
-    <Router>
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/what-is-doping" element={<WhatIsDoping />} />
-          <Route path="/harmful-effects" element={<HarmfulEffects />} />
-          <Route path="/cases" element={<Cases />} />
-          <Route path="/awareness" element={<Awareness />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-      <Footer />
-    </Router>
+    <div>
+      <header>
+        <h1>Anti-Doping Awareness</h1>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <section id="about">
+        <h2>What is Doping?</h2>
+        <p>Doping refers to the use of banned substances or methods to unfairly improve athletic performance.</p>
+      </section>
+
+      <section id="resources">
+        <h2>Educational Resources</h2>
+        <ul>
+          <li><a href="https://www.wada-ama.org">WADA Official Site</a></li>
+          <li><a href="https://www.nadaindia.org/">NADA India</a></li>
+        </ul>
+      </section>
+
+      <section id="quiz">
+        <h2>Test Your Knowledge</h2>
+        <p>Coming soon: An interactive quiz to test what you know about anti-doping.</p>
+      </section>
+
+      <footer>
+        <p>&copy; 2025 Anti-Doping Awareness Initiative</p>
+      </footer>
+    </div>
   );
 }
+
+export default App;
