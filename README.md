@@ -1,12 +1,51 @@
-# React + Vite
+** Anti-Doping Awareness Portal – Functional Overview**
+This project is a comprehensive anti-doping awareness web application designed to educate athletes, students, and sports professionals about doping, its risks, and prevention strategies.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ **What the Website Offers**
+1. **Homepage**
+Hero section introducing the mission of clean sport.
 
-Currently, two official plugins are available:
+Floating visuals and action buttons to engage users.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. **What is Doping?**
+Detailed explanation of doping in sports.
 
-## Expanding the ESLint configuration
+Types of substances and methods used in doping.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Real-life scandals with visuals.
+
+Animated, well-structured information to raise awareness.
+
+3. **Side Effects & Real-Life Cases**
+Lists serious health risks of doping.
+
+Gallery of famous athletes caught doping.
+
+Lessons from real-world cases to educate and discourage misuse.
+
+4.** Quizzes**
+Engaging quizzes to test knowledge on doping facts.
+
+Progress display, scoring, and interactive UI.
+
+Encourages self-learning through gamification.
+
+5. **Profile Page**
+Users can register/login.
+
+Edit and view personal profile with sport, age, etc.
+
+Personalization for tailored experience.
+
+6. **Authentication**
+Secure Signup/Login using hashed passwords via Express + MongoDB.
+
+Persistent session for logged-in users.
+
+7.** Modern UI/UX**
+Responsive layout across devices.
+
+Smooth animations and card layouts.
+
+Organized sections with vibrant visuals and green-blue themed color palette.
+
