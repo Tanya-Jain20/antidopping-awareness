@@ -1,42 +1,85 @@
-import './styles.css';
+import React, { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function App() {
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Quiz from "./components/Quiz";
+import WhatIsDoping from "./components/WhatIsDoping";
+import Profile from "./components/Profile";
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import SideEffects from "./components/SideEffects";
+export default function App() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  const handleSignup = async ({ firstname, lastname, email, password }) => {
+  try {
+    await axios.post("http://localhost:3000/signup", {
+      firstname,
+      lastname,
+      email,
+      password,
+    });
+    alert("Signup successful! Please log in.");
+    navigate("/login"); // ✅ Go to login
+  } catch (err) {
+    console.error(err);
+    alert("Signup failed. Email might already be in use.");
+  }
+};
+
+ const handleLogin = async ({ email, password }) => {
+  try {
+    const res = await axios.post("http://localhost:3000/signin", {
+      email,
+      password,
+    });
+
+    if (res.data.token) {
+      setUser({ email }); // Save email in state
+      navigate("/profile");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Login failed. Invalid email or password.");
+  }
+};
+
+  const handleLogout = () => {
+    setUser(null);
+    navigate("/");
+  };
+
   return (
-    <div>
-      <header>
-        <h1>Anti-Doping Awareness</h1>
-        <nav>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-          </ul>
-        </nav>
-      </header>
-
-      <section id="about">
-        <h2>What is Doping?</h2>
-        <p>Doping refers to the use of banned substances or methods to unfairly improve athletic performance.</p>
-      </section>
-
-      <section id="resources">
-        <h2>Educational Resources</h2>
-        <ul>
-          <li><a href="https://www.wada-ama.org">WADA Official Site</a></li>
-          <li><a href="https://www.nadaindia.org/">NADA India</a></li>
-        </ul>
-      </section>
-
-      <section id="quiz">
-        <h2>Test Your Knowledge</h2>
-        <p>Coming soon: An interactive quiz to test what you know about anti-doping.</p>
-      </section>
-
-      <footer>
-        <p>&copy; 2025 Anti-Doping Awareness Initiative</p>
-      </footer>
-    </div>
+    <>
+      <Navbar user={user} onLogout={handleLogout} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/quiz" element={<Quiz />} />
+<Route path="/what-is-doping" element={<WhatIsDoping />} />      
+       
+       <Route path="/side-effects" element={<SideEffects />} /> <Route
+          path="/profile"
+          element={
+            <ProtectedRoute user={user}>
+              <Profile user={user} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Login onLogin={handleLogin} onSignup={handleSignup} />
+          }
+        />
+        <Route
+          path="*"
+          element={<h2 style={{ textAlign: "center" }}>404 – Page not found</h2>}
+        />
+      </Routes>
+      
+    </>
   );
 }
-
-export default App;

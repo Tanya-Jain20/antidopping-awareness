@@ -1,72 +1,33 @@
-import { useState } from 'react';
+import { useEffect } from "react";
 
-export default function Modal({ onClose }) {
-  const [isLogin, setIsLogin] = useState(true);
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: ''
-  });
+export default function Modal({ show, onClose, title, children }) {
+  useEffect(() => {
+    if (show) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+  }, [show]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Add your authentication logic here
-    alert(isLogin ? 'Login functionality will go here' : 'Signup functionality will go here');
-    onClose();
-  };
+  if (!show) return null;
 
   return (
-    <div className="modal" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <span className="close" onClick={onClose}>&times;</span>
-        <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
-        <form onSubmit={handleSubmit}>
-          {!isLogin && (
-            <>
-              <input
-                type="text"
-                placeholder="First Name"
-                value={formData.firstName}
-                onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                required
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                value={formData.lastName}
-                onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                required
-              />
-            </>
-          )}
-          <input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) => setFormData({...formData, email: e.target.value})}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={(e) => setFormData({...formData, password: e.target.value})}
-            required
-          />
-          <button type="submit">{isLogin ? 'Login' : 'Sign Up'}</button>
-        </form>
-        <p>
-          {isLogin ? "Don't have an account? " : "Already have an account? "}
-          <button 
-            type="button" 
-            onClick={() => setIsLogin(!isLogin)}
-            className="text-link"
-          >
-            {isLogin ? 'Sign up' : 'Login'}
-          </button>
-        </p>
+    <>
+      <div className="modal-backdrop fade show"></div>
+      <div className="modal d-block" tabIndex="-1">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">{title}</h5>
+              <button type="button" className="btn-close" onClick={onClose}></button>
+            </div>
+            <div className="modal-body">{children}</div>
+            <div className="modal-footer">
+              <button className="btn btn-primary" onClick={onClose}>Close</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

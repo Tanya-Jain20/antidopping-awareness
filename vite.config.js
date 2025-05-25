@@ -5,7 +5,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    strictPort: true,
-    open: true // Automatically open browser
-  }
+    open: true,
+    proxy: {
+      '/signup': 'http://localhost:3000',
+      '/signin': 'http://localhost:3000',
+    },
+  },
 })
