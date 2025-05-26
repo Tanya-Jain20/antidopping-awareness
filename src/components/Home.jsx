@@ -43,6 +43,24 @@ export default function Home() {
     <>
    
       <HeroSection />
+    
+
+<section className="video-section">
+  <h2>Watch Our Anti-Doping Awareness Videos</h2>
+  <div className="video-grid">
+    <div className="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/4rUpX3QSPmw" title="Video 1" allowFullScreen></iframe>
+    </div>
+    <div className="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/_PXMmFMbqx0" title="Video 2" allowFullScreen></iframe>
+    </div>
+    <div className="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/MIfa64Bdtlk" title="Video 3" allowFullScreen></iframe>
+    </div>
+  </div>
+</section>
+
+
       <FeaturesSection />
       <HistorySection />
     

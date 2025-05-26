@@ -11,8 +11,7 @@ app.use(express.json());
 app.use(userRouter);
 
 mongoose.connect('mongodb+srv://jainadinath20:PX0ep6BRWoPgvZpa@cluster0.fry1vb2.mongodb.net/antidopping', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+ 
 }).then(() => {
   console.log("Connected to MongoDB");
   app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
