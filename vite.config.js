@@ -14,6 +14,6 @@ export default defineConfig({
   preview: {
     host: true, // allows connections from any network interface
     port: 10000, // match your preview port
-    allowedHosts: ['antidopping-awareness-a5bg.onrender.com'], // your Render URL
+    allowedHosts: ['antidoppingawarenesss.onrender.com'], // updated Render URL
   },
 });
